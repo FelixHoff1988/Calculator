@@ -40,13 +40,40 @@ public class MathBasics {
         } else {
             result += valueOne;
         }
-
     }
+
+    public void minus() {
+        if(getResult()== 0) {
+            result = valueOne;
+        } else {
+            result -= valueOne;
+        }
+    }
+
+    public void mult() {
+        if(getResult()== 0 || getValueOne() == 0) {
+            result = 0;
+        } else {
+            result *= valueOne;
+        }
+    }
+
+    public void divide() {
+        if(getResult()== 0 || getValueOne() == 0) {
+            result = 0;
+        } else {
+            result /= valueOne;
+        }
+    }
+
     public String calculate() {
         String res;
         if(getOperator() == '+') {
             addition();
-
+        } else if(getOperator() == '-') {
+            minus();
+        } else if(getOperator() == '*') {
+            mult();
         }
         res = Float.toString(result);
         return res;

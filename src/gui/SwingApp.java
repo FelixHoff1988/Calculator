@@ -37,14 +37,17 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;;
 public abstract class SwingApp {
 	private final JTextField status;
 	private final JFrame mainWnd;
+    public int w = 420;
+    public int h = 480;
 	/**
 	 * Default constructor of a SwingApp providing a JFrame
 	 * as main window of the application.
 	 */
 	public SwingApp() {
     	Dimension appSize = Toolkit.getDefaultToolkit().getScreenSize();
+
 		mainWnd = new JFrame(" SwingApp ");
-    	mainWnd.setBounds(appSize.width/2, appSize.height/2, 420,480);
+    	mainWnd.setBounds(appSize.width/2, appSize.height/2, w,h);
     	mainWnd.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		mainWnd.setName("SwingApp:MainWindow");
 

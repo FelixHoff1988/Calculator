@@ -25,6 +25,7 @@ import calculations.MathBasics;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Dimension;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -52,6 +53,7 @@ import javax.swing.border.LineBorder;
 public class ExampleApplication extends SwingApp {
 	public static boolean showComponents = false;
     public MathBasics basics = new MathBasics();
+    public Dimension d;
 	/**
 	 * 
 	 */
@@ -306,35 +308,36 @@ public class ExampleApplication extends SwingApp {
         GridBagConstraints gbc = new GridBagConstraints();
         JPanel GridBag = new JPanel(layout);
 
-        newKey(GridBag, "(", 0,0, 60,40, 1, 1);
-        newKey(GridBag, ")", 1,0, 60,40, 1, 1);
-        newKey(GridBag, "del", 2,0, 60,40, 1, 1);
-        newKey(GridBag, "C", 3,0, 60,40, 1, 1);
 
-        newKey(GridBag, "^2", 0,1, 60,40, 1, 1);
-        newKey(GridBag, "^x", 1,1, 60,40, 1, 1);
-        newKey(GridBag, "^1/2", 2,1, 60,40, 1, 1);
-        newKey(GridBag, "^1/n", 3,1, 60,40, 1, 1);
+        newKey(GridBag, "(", 0,0, (w/4)-5,45, 1, 1);
+        newKey(GridBag, ")", 1,0, (w/4)-5,45, 1, 1);
+        newKey(GridBag, "del", 2,0, (w/4)-5,45, 1, 1);
+        newKey(GridBag, "C", 3,0, (w/4)-5,45,1, 1);
 
-        newKey(GridBag, "7", 0,2, 60,40, 1, 1);
-        newKey(GridBag, "8", 1,2, 60,40, 1, 1);
-        newKey(GridBag, "9", 2,2, 60,40, 1, 1);
-        newKey(GridBag, "+", 3,2, 60,40, 1, 1);
+        newKey(GridBag, "^2", 0,1, (w/4)-5,45, 1, 1);
+        newKey(GridBag, "^x", 1,1, (w/4)-5,45, 1, 1);
+        newKey(GridBag, "^1/2", 2,1, (w/4)-5,45, 1, 1);
+        newKey(GridBag, "^1/n", 3,1, (w/4)-5,45, 1, 1);
 
-        newKey(GridBag, "4", 0,3, 60,40, 1, 1);
-        newKey(GridBag, "5", 1,3, 60,40, 1, 1);
-        newKey(GridBag, "6", 2,3, 60,40, 1, 1);
-        newKey(GridBag, "-", 3,3, 60,40, 1, 1);
+        newKey(GridBag, "7", 0,2, (w/4)-5,45, 1, 1);
+        newKey(GridBag, "8", 1,2, (w/4)-5,45, 1, 1);
+        newKey(GridBag, "9", 2,2, (w/4)-5,45, 1, 1);
+        newKey(GridBag, "+", 3,2, (w/4)-5,45, 1, 1);
 
-        newKey(GridBag, "1", 0,4, 60,40, 1, 1);
-        newKey(GridBag, "2", 1,4, 60,40, 1, 1);
-        newKey(GridBag, "3", 2,4, 60,40, 1, 1);
-        newKey(GridBag, "*", 3,4, 60,40, 1, 1);
+        newKey(GridBag, "4", 0,3, (w/4)-5,45, 1, 1);
+        newKey(GridBag, "5", 1,3, (w/4)-5,45, 1, 1);
+        newKey(GridBag, "6", 2,3, (w/4)-5,45, 1, 1);
+        newKey(GridBag, "-", 3,3, (w/4)-5,45, 1, 1);
 
-        newKey(GridBag, ",", 0,5, 60,40, 1, 1);
-        newKey(GridBag, "0", 1,5, 60,40, 1, 1);
-        newKey(GridBag, "=", 2,5, 60,40, 1, 1);
-        newKey(GridBag, "/", 3,5, 60,40, 1, 1);
+        newKey(GridBag, "1", 0,4, (w/4)-5,45, 1, 1);
+        newKey(GridBag, "2", 1,4, (w/4)-5,45, 1, 1);
+        newKey(GridBag, "3", 2,4, (w/4)-5,45, 1, 1);
+        newKey(GridBag, "*", 3,4, (w/4)-5,45, 1, 1);
+
+        newKey(GridBag, ",", 0,5, (w/4)-5,45, 1, 1);
+        newKey(GridBag, "0", 1,5, (w/4)-5,45, 1, 1);
+        newKey(GridBag, "=", 2,5, (w/4)-5,45, 1, 1);
+        newKey(GridBag, "/", 3,5, (w/4)-5,45, 1, 1);
 
         return GridBag;
     }
