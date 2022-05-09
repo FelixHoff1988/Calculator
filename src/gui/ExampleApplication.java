@@ -20,10 +20,11 @@
  */
 package gui;
 
+import calculations.MathBasics;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -40,6 +41,8 @@ import javax.swing.WindowConstants;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
+
+
 /**
  * Beispiel einer Swing Applikation mit Menu, ToolBar 
  * und einem Dialog.
@@ -47,7 +50,8 @@ import javax.swing.border.LineBorder;
  *
  */
 public class ExampleApplication extends SwingApp {
-	public static boolean showComponents = false; 
+	public static boolean showComponents = false;
+    public MathBasics basics = new MathBasics();
 	/**
 	 * 
 	 */
@@ -206,17 +210,9 @@ public class ExampleApplication extends SwingApp {
         return mb;
 	}
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		ExampleApplication.showComponents = true;
-        SwingApp app = new ExampleApplication();
-        app.startUp();
-	}
-
-    public JPanel key(JPanel GridBag, String nameButton, int xPos, int yPos, int width, int height, int gridwidth, int gridheight) {
+    public JPanel newKey(JPanel GridBag, String nameButton, int xPos, int yPos, int width, int height, int gridwidth, int gridheight) {
         JButton button = new JButton(nameButton);
+        button.setName(nameButton);
         GridBagConstraints gbc = new GridBagConstraints();
         button.setPreferredSize(new Dimension(width,height));
         gbc.gridx = xPos;
@@ -224,6 +220,84 @@ public class ExampleApplication extends SwingApp {
         gbc.gridwidth = gridwidth;
         gbc.gridheight = gridheight;
         GridBag.add(button, gbc);
+
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                final String fmt = "Evt: %s pressed";
+                switch (button.getName()) {
+                    case "0":
+                        basics.setValueOne(0);
+                        setStatusMsg(String.format(fmt, button.getName()));
+                        break;
+                    case "1":
+                        basics.setValueOne(1);
+                        setStatusMsg(String.format(fmt, button.getName()));
+                        break;
+                    case "2":
+                        basics.setValueOne(2);
+                        setStatusMsg(String.format(fmt, button.getName()));
+                        break;
+                    case "3":
+                        basics.setValueOne(3);
+                        setStatusMsg(String.format(fmt, button.getName()));
+                        break;
+                    case "4":
+                        basics.setValueOne(4);
+                        setStatusMsg(String.format(fmt, button.getName()));
+                        break;
+                    case "5":
+                        basics.setValueOne(5);
+                        setStatusMsg(String.format(fmt, button.getName()));
+                        break;
+                    case "6":
+                        basics.setValueOne(6);
+                        setStatusMsg(String.format(fmt, button.getName()));
+                        break;
+                    case "7":
+                        basics.setValueOne(7);
+                        setStatusMsg(String.format(fmt, button.getName()));
+                        break;
+                    case "8":
+                        basics.setValueOne(8);
+                        setStatusMsg(String.format(fmt, button.getName()));
+                        break;
+                    case "9":
+                        basics.setValueOne(9);
+                        setStatusMsg(String.format(fmt, button.getName()));
+                        break;
+                    case "+":
+                        basics.addition(basics.getValueOne());
+                        setStatusMsg(String.format(fmt, button.getName()));
+                        break;
+                    case "-":
+                        basics.setOperator('-');
+                        setStatusMsg(String.format(fmt, button.getName()));
+                        break;
+                    case "*":
+                        basics.setOperator('*');
+                        setStatusMsg(String.format(fmt, button.getName()));
+                        break;
+                    case "/":
+                        basics.setOperator('/');
+                        setStatusMsg(String.format(fmt, button.getName()));
+                        break;
+                    case "(":
+                        basics.setOperator('(');
+                        setStatusMsg(String.format(fmt, button.getName()));
+                        break;
+                    case ")":
+                        basics.setOperator(')');
+                        setStatusMsg(String.format(fmt, button.getName()));
+                        break;
+                    case "=":
+                        String res = Float.toString(basics.result);
+                        setStatusMsg(res);
+                        break;
+                }
+
+
+            }
+        });
         return GridBag;
     }
 
@@ -232,37 +306,45 @@ public class ExampleApplication extends SwingApp {
         GridBagConstraints gbc = new GridBagConstraints();
         JPanel GridBag = new JPanel(layout);
 
-        key(GridBag, "(", 0,0, 60,40, 1, 1);
-        key(GridBag, ")", 1,0, 60,40, 1, 1);
-        key(GridBag, "del", 2,0, 60,40, 1, 1);
-        key(GridBag, "C", 3,0, 60,40, 1, 1);
+        newKey(GridBag, "(", 0,0, 60,40, 1, 1);
+        newKey(GridBag, ")", 1,0, 60,40, 1, 1);
+        newKey(GridBag, "del", 2,0, 60,40, 1, 1);
+        newKey(GridBag, "C", 3,0, 60,40, 1, 1);
 
-        key(GridBag, "^2", 0,1, 60,40, 1, 1);
-        key(GridBag, "^x", 1,1, 60,40, 1, 1);
-        key(GridBag, "^1/2", 2,1, 60,40, 1, 1);
-        key(GridBag, "^1/n", 3,1, 60,40, 1, 1);
+        newKey(GridBag, "^2", 0,1, 60,40, 1, 1);
+        newKey(GridBag, "^x", 1,1, 60,40, 1, 1);
+        newKey(GridBag, "^1/2", 2,1, 60,40, 1, 1);
+        newKey(GridBag, "^1/n", 3,1, 60,40, 1, 1);
 
-        key(GridBag, "7", 0,2, 60,40, 1, 1);
-        key(GridBag, "8", 1,2, 60,40, 1, 1);
-        key(GridBag, "9", 2,2, 60,40, 1, 1);
-        key(GridBag, "+", 3,2, 60,40, 1, 1);
+        newKey(GridBag, "7", 0,2, 60,40, 1, 1);
+        newKey(GridBag, "8", 1,2, 60,40, 1, 1);
+        newKey(GridBag, "9", 2,2, 60,40, 1, 1);
+        newKey(GridBag, "+", 3,2, 60,40, 1, 1);
 
-        key(GridBag, "4", 0,3, 60,40, 1, 1);
-        key(GridBag, "5", 1,3, 60,40, 1, 1);
-        key(GridBag, "6", 2,3, 60,40, 1, 1);
-        key(GridBag, "-", 3,3, 60,40, 1, 1);
+        newKey(GridBag, "4", 0,3, 60,40, 1, 1);
+        newKey(GridBag, "5", 1,3, 60,40, 1, 1);
+        newKey(GridBag, "6", 2,3, 60,40, 1, 1);
+        newKey(GridBag, "-", 3,3, 60,40, 1, 1);
 
-        key(GridBag, "1", 0,4, 60,40, 1, 1);
-        key(GridBag, "2", 1,4, 60,40, 1, 1);
-        key(GridBag, "3", 2,4, 60,40, 1, 1);
-        key(GridBag, "*", 3,4, 60,40, 1, 1);
+        newKey(GridBag, "1", 0,4, 60,40, 1, 1);
+        newKey(GridBag, "2", 1,4, 60,40, 1, 1);
+        newKey(GridBag, "3", 2,4, 60,40, 1, 1);
+        newKey(GridBag, "*", 3,4, 60,40, 1, 1);
 
-        key(GridBag, ",", 0,5, 60,40, 1, 1);
-        key(GridBag, "0", 1,5, 60,40, 1, 1);
-        key(GridBag, "=", 2,5, 60,40, 1, 1);
-        key(GridBag, "/", 3,5, 60,40, 1, 1);
+        newKey(GridBag, ",", 0,5, 60,40, 1, 1);
+        newKey(GridBag, "0", 1,5, 60,40, 1, 1);
+        newKey(GridBag, "=", 2,5, 60,40, 1, 1);
+        newKey(GridBag, "/", 3,5, 60,40, 1, 1);
 
         return GridBag;
     }
 
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        ExampleApplication.showComponents = true;
+        SwingApp app = new ExampleApplication();
+        app.startUp();
+    }
 }
