@@ -266,7 +266,7 @@ public class ExampleApplication extends SwingApp {
                         setStatusMsg(String.format(fmt, button.getName()));
                         break;
                     case "+":
-                        basics.addition(basics.getValueOne());
+                        basics.setOperator('+');
                         setStatusMsg(String.format(fmt, button.getName()));
                         break;
                     case "-":
@@ -290,7 +290,7 @@ public class ExampleApplication extends SwingApp {
                         setStatusMsg(String.format(fmt, button.getName()));
                         break;
                     case "=":
-                        String res = Float.toString(basics.result);
+                        String res = basics.calculate();
                         setStatusMsg(res);
                         break;
                 }

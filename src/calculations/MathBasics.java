@@ -34,13 +34,21 @@ public class MathBasics {
         return result;
     }
 
-    public void addition(float value) {
+    public void addition() {
         if(getResult()== 0) {
-            result = value;
+            result = valueOne;
         } else {
-            result += value;
+            result += valueOne;
         }
-        setValueOne(0);
 
+    }
+    public String calculate() {
+        String res;
+        if(getOperator() == '+') {
+            addition();
+
+        }
+        res = Float.toString(result);
+        return res;
     }
 }
