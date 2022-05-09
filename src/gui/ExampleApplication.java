@@ -229,75 +229,77 @@ public class ExampleApplication extends SwingApp {
                 switch (button.getName()) {
                     case "0":
                         basics.setValueOne(0);
-                        setStatusMsg(String.format(fmt, button.getName()));
+                        setStatusMsg(button.getName());
                         break;
                     case "1":
                         basics.setValueOne(1);
-                        setStatusMsg(String.format(fmt, button.getName()));
+                        setStatusMsg(button.getName());
                         break;
                     case "2":
                         basics.setValueOne(2);
-                        setStatusMsg(String.format(fmt, button.getName()));
+                        setStatusMsg(button.getName());
                         break;
                     case "3":
                         basics.setValueOne(3);
-                        setStatusMsg(String.format(fmt, button.getName()));
+                        setStatusMsg(button.getName());
                         break;
                     case "4":
                         basics.setValueOne(4);
-                        setStatusMsg(String.format(fmt, button.getName()));
+                        setStatusMsg(button.getName());
                         break;
                     case "5":
                         basics.setValueOne(5);
-                        setStatusMsg(String.format(fmt, button.getName()));
+                        setStatusMsg(button.getName());
                         break;
                     case "6":
                         basics.setValueOne(6);
-                        setStatusMsg(String.format(fmt, button.getName()));
+                        setStatusMsg(button.getName());
                         break;
                     case "7":
                         basics.setValueOne(7);
-                        setStatusMsg(String.format(fmt, button.getName()));
+                        setStatusMsg(button.getName());
                         break;
                     case "8":
                         basics.setValueOne(8);
-                        setStatusMsg(String.format(fmt, button.getName()));
+                        setStatusMsg(button.getName());
                         break;
                     case "9":
                         basics.setValueOne(9);
-                        setStatusMsg(String.format(fmt, button.getName()));
+                        setStatusMsg(button.getName());
                         break;
                     case "+":
                         basics.setOperator('+');
-                        setStatusMsg(String.format(fmt, button.getName()));
+                        setStatusMsg(button.getName());
                         break;
                     case "-":
                         basics.setOperator('-');
-                        setStatusMsg(String.format(fmt, button.getName()));
+                        setStatusMsg(button.getName());
                         break;
                     case "*":
                         basics.setOperator('*');
-                        setStatusMsg(String.format(fmt, button.getName()));
+                        setStatusMsg(button.getName());
                         break;
                     case "/":
                         basics.setOperator('/');
-                        setStatusMsg(String.format(fmt, button.getName()));
+                        setStatusMsg(button.getName());
                         break;
                     case "(":
                         basics.setOperator('(');
-                        setStatusMsg(String.format(fmt, button.getName()));
+                        setStatusMsg(button.getName());
                         break;
                     case ")":
                         basics.setOperator(')');
-                        setStatusMsg(String.format(fmt, button.getName()));
+                        setStatusMsg(button.getName());
                         break;
                     case "=":
                         String res = basics.calculate();
                         setStatusMsg(res);
                         break;
+                    case "C":
+                        String cleared = basics.clear();
+                        setStatusMsg(cleared);
+                        break;
                 }
-
-
             }
         });
         return GridBag;

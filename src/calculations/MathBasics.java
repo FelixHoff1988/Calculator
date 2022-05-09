@@ -59,10 +59,12 @@ public class MathBasics {
     }
 
     public void divide() {
-        if(getResult()== 0 || getValueOne() == 0) {
+        if(getResult()== 0) {
             result = 0;
+        } else if (getValueOne() == 0) {
+            System.out.println("Wer durch Null teilt, isst auch Kinder");
         } else {
-            result /= valueOne;
+            result = result/valueOne;
         }
     }
 
@@ -74,8 +76,16 @@ public class MathBasics {
             minus();
         } else if(getOperator() == '*') {
             mult();
+        } else if (getOperator() == '/') {
+            divide();
         }
         res = Float.toString(result);
+        return res;
+    }
+
+    public String clear() {
+        result = 0;
+        String res = Float.toString(result);
         return res;
     }
 }
