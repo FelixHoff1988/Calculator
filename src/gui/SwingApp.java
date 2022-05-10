@@ -89,9 +89,6 @@ public abstract class SwingApp {
         if (navi != null) {
             frame.add(navi, BorderLayout.WEST);
         }
-        JScrollPane contentPane = new JScrollPane();
-        frame.add(contentPane, BorderLayout.SOUTH);
-        contentPane.setViewportView(createContent());		
 	}
 	
     /**
@@ -112,7 +109,7 @@ public abstract class SwingApp {
      * Create the content for the center region.
      * @return JComponent main content
      */
-    protected abstract JComponent createContent();
+
 
     /**
      * Create the status bar for the gui  integrating the given statusField.

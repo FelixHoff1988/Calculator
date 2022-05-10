@@ -90,15 +90,8 @@ public class ExampleApplication extends SwingApp {
 	 * @return
 	 * @see de.lab4inf.gui.SwingApp#createContent()
 	 */
-	@Override
-	protected JComponent createContent() {
-        JTextPane content = new JTextPane();
-        Dimension d = new Dimension(200, 400);
-        content.setMinimumSize(d);
-        String msg = "Hallo World!";
-        content.setText(msg);
-        return content;
-	}
+
+
 
 	/**
 	 * @param statusField
@@ -144,7 +137,7 @@ public class ExampleApplication extends SwingApp {
 
 	        mb.setBorder(bo);
         }
-        menu.setText("Menu-1");
+        menu.setText("File");
         menu.setToolTipText("Nur \"exit\" funktioniert! ");
         mb.add(menu);
 
@@ -166,7 +159,7 @@ public class ExampleApplication extends SwingApp {
 
         });
         menu = new JMenu();
-        menu.setText("Menu-2");
+        menu.setText("Settings");
         menu.setToolTipText("hier gibt's noch nichts zu gucken");
         mb.add(menu);
         
@@ -266,19 +259,26 @@ public class ExampleApplication extends SwingApp {
                         setStatusMsg(input.getInput());
                         break;
                     case "+":
-                        input.setInput(" + ");
-                        setStatusMsg(input.getInput());
+                        String temp = input.getInput();
+                        char temp2  = temp.charAt(input.getInputLength()-1);
+                        if (input.getInput().charAt(input.getInputLength()-1) == ' ') {
+                            setStatusMsg(input.getInput());
+                        } else {
+                            input.setInput("+");
+                            setStatusMsg(input.getInput());
+                        }
+
                         break;
                     case "-":
-                        input.setInput(" - ");
+                        input.setInput("-");
                         setStatusMsg(input.getInput());
                         break;
                     case "*":
-                        input.setInput(" * ");
+                        input.setInput("*");
                         setStatusMsg(input.getInput());
                         break;
                     case "/":
-                        input.setInput(" / ");
+                        input.setInput("/");
                         setStatusMsg(input.getInput());
                         break;
                     case "(":
@@ -304,7 +304,7 @@ public class ExampleApplication extends SwingApp {
                             setStatusMsg(input.getInput());
                         } else {
                             input.setInput(" = \n");
-                            setStatusMsg(input.getInput());
+                            setStatusMsg(input.parseToHtml(input.getInput()));
                         }
 
                         break;
@@ -322,12 +322,14 @@ public class ExampleApplication extends SwingApp {
         GridBagLayout layout = new GridBagLayout();
         GridBagConstraints gbc = new GridBagConstraints();
         JPanel GridBag = new JPanel(layout);
+        Dimension d = new Dimension(getFrame().getWidth(),getFrame().getHeight());
 
 
-        newKey(GridBag, "(", 0,0, (w/4)-5,45, 1, 1);
-        newKey(GridBag, ")", 1,0, (w/4)-5,45, 1, 1);
-        newKey(GridBag, "del", 2,0, (w/4)-5,45, 1, 1);
-        newKey(GridBag, "C", 3,0, (w/4)-5,45,1, 1);
+
+        newKey(GridBag, "(", 0,0, (d.width/4)-5,(d.height/6)-10, 1, 1);
+        newKey(GridBag, ")", 1,0, (d.width/4)-5,(d.height/6)-10, 1, 1);
+        newKey(GridBag, "del", 2,0, (d.width/4)-5,(d.height/6)-10, 1, 1);
+        newKey(GridBag, "C", 3,0, (d.width/4)-5,(d.height/6)-10,1, 1);
 
         newKey(GridBag, "^2", 0,1, (w/4)-5,45, 1, 1);
         newKey(GridBag, "^x", 1,1, (w/4)-5,45, 1, 1);
