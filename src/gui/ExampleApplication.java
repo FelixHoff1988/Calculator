@@ -21,27 +21,18 @@
 package gui;
 
 import calculations.MathBasics;
+import calculations.Input;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Dimension;
-import javax.swing.Box;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.JTextPane;
-import javax.swing.JToolBar;
-import javax.swing.WindowConstants;
+import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
-
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 
 /**
@@ -53,6 +44,7 @@ import javax.swing.border.LineBorder;
 public class ExampleApplication extends SwingApp {
 	public static boolean showComponents = false;
     public MathBasics basics = new MathBasics();
+    public Input input = new Input();
     public Dimension d;
 	/**
 	 * 
@@ -103,8 +95,7 @@ public class ExampleApplication extends SwingApp {
         JTextPane content = new JTextPane();
         Dimension d = new Dimension(200, 400);
         content.setMinimumSize(d);
-        String msg = "Hallo World! \n\n Mit einer beispielhaften Swing GUI\n\n"+
-                " Probiere die Knöpfe in der ToolBar aus und achte auf den Status...";
+        String msg = "Hallo World!";
         content.setText(msg);
         return content;
 	}
@@ -115,24 +106,25 @@ public class ExampleApplication extends SwingApp {
 	 * @see de.lab4inf.gui.SwingApp#createStatusBar(javax.swing.JTextField)
 	 */
 	@Override
-	protected JComponent createStatusBar(JTextField status) {
-        FlowLayout layout = new FlowLayout(FlowLayout.LEFT);
+	protected JComponent createStatusBar(JLabel status) {
+        FlowLayout layout = new FlowLayout(FlowLayout.RIGHT);
         JPanel statusBar = new JPanel(layout);
+        status.setHorizontalAlignment(SwingConstants.RIGHT);
         if(showComponents) {
-	        Border bo = new LineBorder(Color.red,2);
-	        statusBar.setBorder(bo);
+
+            statusBar.setBackground(Color.white);
+	        statusBar.setBorder(new LineBorder(Color.DARK_GRAY,1));
         }
         statusBar.setToolTipText("dies ist die StatusBar");
-        String msg = "Hey die GUI scheint zu laufen :-)";
+        String msg = "0";
         Font font = status.getFont();
-        int height = font.getSize() + 8;
-        int width = 8 * msg.length();
+        int height = (font.getSize() + 8)*3;
+        int width = 390;
         status.setText(msg);
         Dimension dim = new Dimension(width, height);
         status.setMaximumSize(dim);
         status.setMinimumSize(dim);
         status.setPreferredSize(dim);
-        statusBar.add(new JLabel("Status: "));
         statusBar.add(status);
         return statusBar;
 	}
@@ -148,7 +140,8 @@ public class ExampleApplication extends SwingApp {
         JMenu menu = new JMenu();
         JMenuItem item;
         if(showComponents) {
-	        Border bo = new LineBorder(Color.blue,5);
+	        Border bo = new LineBorder(Color.gray,1);
+
 	        mb.setBorder(bo);
         }
         menu.setText("Menu-1");
@@ -228,76 +221,96 @@ public class ExampleApplication extends SwingApp {
                 final String fmt = "Evt: %s pressed";
                 switch (button.getName()) {
                     case "0":
-                        basics.setValueOne(0);
-                        setStatusMsg(button.getName());
+                        if(input.getInput() == "0") {
+                            input.clear();
+                            setStatusMsg(input.getInput());
+                        } else {
+                            input.setInput("0");
+                            setStatusMsg(input.getInput());
+                        }
                         break;
                     case "1":
-                        basics.setValueOne(1);
-                        setStatusMsg(button.getName());
+                        input.setInput("1");
+                        setStatusMsg(input.getInput());
                         break;
                     case "2":
-                        basics.setValueOne(2);
-                        setStatusMsg(button.getName());
+                        input.setInput("2");
+                        setStatusMsg(input.getInput());
                         break;
                     case "3":
-                        basics.setValueOne(3);
-                        setStatusMsg(button.getName());
+                        input.setInput("3");
+                        setStatusMsg(input.getInput());
                         break;
                     case "4":
-                        basics.setValueOne(4);
-                        setStatusMsg(button.getName());
+                        input.setInput("4");
+                        setStatusMsg(input.getInput());
                         break;
                     case "5":
-                        basics.setValueOne(5);
-                        setStatusMsg(button.getName());
+                        input.setInput("5");
+                        setStatusMsg(input.getInput());
                         break;
                     case "6":
-                        basics.setValueOne(6);
-                        setStatusMsg(button.getName());
+                        input.setInput("6");
+                        setStatusMsg(input.getInput());
                         break;
                     case "7":
-                        basics.setValueOne(7);
-                        setStatusMsg(button.getName());
+                        input.setInput("7");
+                        setStatusMsg(input.getInput());
                         break;
                     case "8":
-                        basics.setValueOne(8);
-                        setStatusMsg(button.getName());
+                        input.setInput("8");
+                        setStatusMsg(input.getInput());
                         break;
                     case "9":
-                        basics.setValueOne(9);
-                        setStatusMsg(button.getName());
+                        input.setInput("9");
+                        setStatusMsg(input.getInput());
                         break;
                     case "+":
-                        basics.setOperator('+');
-                        setStatusMsg(button.getName());
+                        input.setInput(" + ");
+                        setStatusMsg(input.getInput());
                         break;
                     case "-":
-                        basics.setOperator('-');
-                        setStatusMsg(button.getName());
+                        input.setInput(" - ");
+                        setStatusMsg(input.getInput());
                         break;
                     case "*":
-                        basics.setOperator('*');
-                        setStatusMsg(button.getName());
+                        input.setInput(" * ");
+                        setStatusMsg(input.getInput());
                         break;
                     case "/":
-                        basics.setOperator('/');
-                        setStatusMsg(button.getName());
+                        input.setInput(" / ");
+                        setStatusMsg(input.getInput());
                         break;
                     case "(":
-                        basics.setOperator('(');
-                        setStatusMsg(button.getName());
+                        input.setInput("(");
+                        setStatusMsg(input.getInput());
                         break;
                     case ")":
-                        basics.setOperator(')');
-                        setStatusMsg(button.getName());
+                        input.setInput(")");
+                        setStatusMsg(input.getInput());
+                        break;
+                    case ",":
+                        if(input.getInput() =="0"){
+                            input.setInput("0,");
+                            setStatusMsg(input.getInput());
+                        } else {
+                            input.setInput(",");
+                            setStatusMsg(input.getInput());
+                        }
                         break;
                     case "=":
-                        String res = basics.calculate();
-                        setStatusMsg(res);
+                        if(input.getInput() == "0") {
+                            input.clear();
+                            setStatusMsg(input.getInput());
+                        } else {
+                            input.setInput(" = \n");
+                            setStatusMsg(input.getInput());
+                        }
+
                         break;
                     case "C":
-                        String cleared = basics.clear();
-                        setStatusMsg(cleared);
+                        input.clear();
+                        setStatusMsg(input.getInput());
                         break;
                 }
             }

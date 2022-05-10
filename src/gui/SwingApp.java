@@ -35,7 +35,7 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;;
  *
  */
 public abstract class SwingApp {
-	private final JTextField status;
+	private final JLabel status;
 	private final JFrame mainWnd;
     public int w = 420;
     public int h = 480;
@@ -51,7 +51,7 @@ public abstract class SwingApp {
     	mainWnd.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		mainWnd.setName("SwingApp:MainWindow");
 
-		status = new JTextField();
+		status = new JLabel();
 		status.setName("SwingApp:StatusField");
 		init(mainWnd);
 	}
@@ -119,7 +119,7 @@ public abstract class SwingApp {
      * @param statusField field to use for messages
      * @return  JComponent status bar
      */
-    protected abstract JComponent createStatusBar(final JTextField statusField);
+    protected abstract JComponent createStatusBar(final JLabel statusField);
 
     /**
      * Create the menu for the gui.
@@ -131,7 +131,7 @@ public abstract class SwingApp {
      * Get the status value.
      * @return the status
      */
-    protected final JTextField getStatusField() {
+    protected final JLabel getStatusField() {
         return status;
     }
 

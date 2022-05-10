@@ -83,9 +83,5 @@ public class MathBasics {
         return res;
     }
 
-    public String clear() {
-        result = 0;
-        String res = Float.toString(result);
-        return res;
-    }
+
 }
