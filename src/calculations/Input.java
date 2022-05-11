@@ -7,6 +7,9 @@ public class Input {
     int inputLength = input.length();
     int countOpenBrackets = 0;
 
+    public Input(){
+
+    }
 
     public int getInputLength() {
         inputLength = input.length();

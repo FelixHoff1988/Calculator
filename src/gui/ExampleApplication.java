@@ -196,6 +196,7 @@ public class ExampleApplication extends SwingApp {
 
     public JPanel newKey(JPanel GridBag, String nameButton, int xPos, int yPos, int width, int height, int gridwidth, int gridheight) {
         JButton button = new JButton(nameButton);
+
         button.setName(nameButton);
         GridBagConstraints gbc = new GridBagConstraints();
         button.setPreferredSize(new Dimension(width,height));
@@ -204,10 +205,14 @@ public class ExampleApplication extends SwingApp {
         gbc.gridwidth = gridwidth;
         gbc.gridheight = gridheight;
         GridBag.add(button, gbc);
+        actionHandler(button);
+        return GridBag;
+    }
 
-        button.addActionListener(new ActionListener() {
+    public void actionHandler(JButton pbutton) {
+        pbutton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                switch (button.getName()) {
+                switch (pbutton.getName()) {
                     case "0":
                         setStatusMsg(input.zeroPressed());
                         break;
@@ -268,7 +273,6 @@ public class ExampleApplication extends SwingApp {
                 }
             }
         });
-        return GridBag;
     }
 
     protected JPanel createKeyboard(){
