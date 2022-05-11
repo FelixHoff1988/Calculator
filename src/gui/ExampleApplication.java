@@ -30,9 +30,6 @@ import java.awt.Dimension;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
 
 
 /**
@@ -211,106 +208,63 @@ public class ExampleApplication extends SwingApp {
 
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                final String fmt = "Evt: %s pressed";
                 switch (button.getName()) {
                     case "0":
-                        if(input.getInput() == "0") {
-                            input.clear();
-                            setStatusMsg(input.getInput());
-                        } else {
-                            input.setInput("0");
-                            setStatusMsg(input.getInput());
-                        }
+                        setStatusMsg(input.zeroPressed());
                         break;
                     case "1":
-                        input.setInput("1");
-                        setStatusMsg(input.getInput());
+                        setStatusMsg(input.numPressed("1"));
                         break;
                     case "2":
-                        input.setInput("2");
-                        setStatusMsg(input.getInput());
+                        setStatusMsg(input.numPressed("2"));
                         break;
                     case "3":
-                        input.setInput("3");
-                        setStatusMsg(input.getInput());
+                        setStatusMsg(input.numPressed("3"));
                         break;
                     case "4":
-                        input.setInput("4");
-                        setStatusMsg(input.getInput());
+                        setStatusMsg(input.numPressed("4"));
                         break;
                     case "5":
-                        input.setInput("5");
-                        setStatusMsg(input.getInput());
+                        setStatusMsg(input.numPressed("5"));
                         break;
                     case "6":
-                        input.setInput("6");
-                        setStatusMsg(input.getInput());
+                        setStatusMsg(input.numPressed("6"));
                         break;
                     case "7":
-                        input.setInput("7");
-                        setStatusMsg(input.getInput());
+                        setStatusMsg(input.numPressed("7"));
                         break;
                     case "8":
-                        input.setInput("8");
-                        setStatusMsg(input.getInput());
+                        setStatusMsg(input.numPressed("8"));
                         break;
                     case "9":
-                        input.setInput("9");
-                        setStatusMsg(input.getInput());
+                        setStatusMsg(input.numPressed("9"));
                         break;
                     case "+":
-                        String temp = input.getInput();
-                        char temp2  = temp.charAt(input.getInputLength()-1);
-                        if (input.getInput().charAt(input.getInputLength()-1) == ' ') {
-                            setStatusMsg(input.getInput());
-                        } else {
-                            input.setInput("+");
-                            setStatusMsg(input.getInput());
-                        }
-
+                        setStatusMsg((input.operatorPressed(" + ")));
                         break;
                     case "-":
-                        input.setInput("-");
-                        setStatusMsg(input.getInput());
+                        setStatusMsg((input.operatorPressed(" - ")));
                         break;
                     case "*":
-                        input.setInput("*");
-                        setStatusMsg(input.getInput());
+                        setStatusMsg((input.operatorPressed(" * ")));
                         break;
                     case "/":
-                        input.setInput("/");
-                        setStatusMsg(input.getInput());
+                        setStatusMsg((input.operatorPressed(" / ")));
                         break;
                     case "(":
-                        input.setInput("(");
-                        setStatusMsg(input.getInput());
+                        setStatusMsg(input.openBracketPressed());
                         break;
                     case ")":
-                        input.setInput(")");
-                        setStatusMsg(input.getInput());
+                        setStatusMsg(input.closeBracketPressed());
                         break;
                     case ",":
-                        if(input.getInput() =="0"){
-                            input.setInput("0,");
-                            setStatusMsg(input.getInput());
-                        } else {
-                            input.setInput(",");
-                            setStatusMsg(input.getInput());
-                        }
+                        setStatusMsg(input.commaPressed());
                         break;
                     case "=":
-                        if(input.getInput() == "0") {
-                            input.clear();
-                            setStatusMsg(input.getInput());
-                        } else {
-                            input.setInput(" = \n");
-                            setStatusMsg(input.parseToHtml(input.getInput()));
-                        }
-
+                        setStatusMsg(input.equalPressed());
                         break;
                     case "C":
-                        input.clear();
-                        setStatusMsg(input.getInput());
+                        setStatusMsg(input.clearPressed());
                         break;
                 }
             }
