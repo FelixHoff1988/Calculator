@@ -54,7 +54,7 @@ public class ExampleApplication extends SwingApp {
 	 * @return
 	 * @see de.lab4inf.gui.SwingApp#createToolBar()
 	 */
-	@Override
+
 	protected JComponent createToolBar() {
         JToolBar tb = new JToolBar(JToolBar.HORIZONTAL);
         if(showComponents) {
@@ -149,7 +149,6 @@ public class ExampleApplication extends SwingApp {
         menu.add(item);
         item.setToolTipText("Ende der Anwendung");
         item.addActionListener(new ActionListener() {
-
             public void actionPerformed(ActionEvent evt) {
                 shutDown();
             }

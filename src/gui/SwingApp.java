@@ -1,7 +1,7 @@
 /*
  * Project: GoL
  *
- * Copyright (c) 2004-2022,  Prof. Dr. Nikolaus Wulff
+ * Copyright (c) 2004-2022,  Prof. Dr. Nikolaus
  * University of Applied Sciences, Muenster, Germany
  * Lab for computer sciences (Lab4Inf).
  *
@@ -27,7 +27,7 @@ import java.awt.Toolkit;
 
 import javax.swing.*;
 
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;;
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 /**
  * Skeleton of a Java Swing based GUI application.
@@ -98,17 +98,8 @@ public abstract class SwingApp {
     protected JComponent createNavigator() {
     	return null;
     }
-    
-    /**
-     * Create a ToolBar for this application.
-     * @return JComponent toolbar
-     */
-    protected abstract JComponent createToolBar();
 
-    /**
-     * Create the content for the center region.
-     * @return JComponent main content
-     */
+
 
 
     /**
