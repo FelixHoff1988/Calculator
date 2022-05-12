@@ -11,7 +11,7 @@ public class Input {
     public Input(){
 
     }
-
+    public Parser parse = new Parser();
     public int getInputLength() {
         inputLength = input.length();
         return inputLength;
@@ -126,13 +126,18 @@ public class Input {
                 clear();
                 return input;
             } else {
+                if (getInput().charAt(getInputLength() - 1) == '(') {
+                    setInput("0");
+                }
                 while (countOpenBrackets != 0) {
                     setInput(")");
                     countOpenBrackets -=1;
                 }
+                parse.splicer(input);
                 setInput(" = \n");
                 countOpenBrackets = 0;
                 equalPressed = true;
+
                 return parseToHtml(getInput());
             }
         }

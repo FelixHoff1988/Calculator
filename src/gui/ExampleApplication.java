@@ -51,46 +51,6 @@ public class ExampleApplication extends SwingApp {
 	}
 
 	/**
-	 * @return
-	 * @see de.lab4inf.gui.SwingApp#createToolBar()
-	 */
-
-	protected JComponent createToolBar() {
-        JToolBar tb = new JToolBar(JToolBar.HORIZONTAL);
-        if(showComponents) {
-        	Border bo = new LineBorder(Color.green,3);
-        	tb.setBorder(bo);
-        }
-        tb.setToolTipText("dies ist die ToolBar, teste die Buttons");
-        JButton b;
-        String name;
-        for (int i = 0; i < 11; i++) {
-            name = "Button:" + i;
-            b = new JButton("" + i);
-            b.setName(name);
-            b.setToolTipText("Anzeige in der Status Zeile von " + name);
-            tb.add(b);
-            b.addActionListener(new ActionListener() {
-
-                public void actionPerformed(ActionEvent evt) {
-                    final String fmt = "Evt: %s pressed";
-                    JButton button = (JButton) evt.getSource();
-                    setStatusMsg(String.format(fmt, button.getName()));
-                }
-
-            });
-        }
-        return tb;
-	}
-
-	/**
-	 * @return
-	 * @see de.lab4inf.gui.SwingApp#createContent()
-	 */
-
-
-
-	/**
 	 * @param statusField
 	 * @return
 	 * @see de.lab4inf.gui.SwingApp#createStatusBar(javax.swing.JTextField)
