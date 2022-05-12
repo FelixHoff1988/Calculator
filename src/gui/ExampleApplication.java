@@ -47,7 +47,7 @@ public class ExampleApplication extends SwingApp {
 	 * 
 	 */
 	public ExampleApplication() {
-		getFrame().setTitle("Beispiel einer Java Swing Applikation");
+		getFrame().setTitle("Signum");
 	}
 
 	/**
@@ -196,7 +196,6 @@ public class ExampleApplication extends SwingApp {
 
     public JPanel newKey(JPanel GridBag, String nameButton, int xPos, int yPos, int width, int height, int gridwidth, int gridheight) {
         JButton button = new JButton(nameButton);
-
         button.setName(nameButton);
         GridBagConstraints gbc = new GridBagConstraints();
         button.setPreferredSize(new Dimension(width,height));
@@ -270,6 +269,8 @@ public class ExampleApplication extends SwingApp {
                     case "C":
                         setStatusMsg(input.clearPressed());
                         break;
+                    case "del":
+                        setStatusMsg(input.delPressed());
                 }
             }
         });
@@ -280,8 +281,6 @@ public class ExampleApplication extends SwingApp {
         GridBagConstraints gbc = new GridBagConstraints();
         JPanel GridBag = new JPanel(layout);
         Dimension d = new Dimension(getFrame().getWidth(),getFrame().getHeight());
-
-
 
         newKey(GridBag, "(", 0,0, (d.width/4)-5,(d.height/6)-10, 1, 1);
         newKey(GridBag, ")", 1,0, (d.width/4)-5,(d.height/6)-10, 1, 1);

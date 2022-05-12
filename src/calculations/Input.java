@@ -4,6 +4,7 @@ public class Input {
     String input = "0";
     String html = "";
     boolean equalPressed = false;
+    String error = "Error";
     int inputLength = input.length();
     int countOpenBrackets = 0;
 
@@ -50,12 +51,18 @@ public class Input {
                 return input;
             }
         }
-        return input;
+        return error;
     }
     public String numPressed(String number) {
         if(!equalPressed) {
             if (getInput() == "0") {
                 deleteInput();
+            }
+            if (getInputLength() != 0){
+                if (getInput().charAt(getInputLength() - 1) == ')') {
+
+                    setInput(" * "+ number);
+                }
             }
             setInput(number);
         }
@@ -63,43 +70,55 @@ public class Input {
     }
     public String operatorPressed(String operator) {
         if(!equalPressed) {
-            if (getInput().charAt(getInputLength() - 1) != ' ') {
+            if (operator == " - ") {
+                if (getInput().charAt(getInputLength() - 1) != ' ') {
+                    setInput(operator);
+                }
+            }
+            if (getInput().charAt(getInputLength() - 1) != ' ' && getInput().charAt(getInputLength() - 1) != '(' ) {
                 setInput(operator);
             }
             return input;
         }
-        return input;
+        return error;
     }
 
     public String openBracketPressed() {
         if(!equalPressed) {
-            if (getInput().charAt(getInputLength() - 1) != ' ') {
+            if (getInput() == "0") {
+                deleteInput();
+                setInput("(");
+            } else if (getInput().charAt(getInputLength() - 1) != ' '&& getInput().charAt(getInputLength() - 1) != '(' ) {
                 setInput(" * (");
             } else {
                 setInput("(");
             }
             countOpenBrackets += 1;
+            closeBracketPressed();
             return input;
 
         }
-        return input;
+        return error;
     }
     public String closeBracketPressed() {
         if(!equalPressed) {
+            if(countOpenBrackets == 0) {
+                return input;
+            }
             if(countOpenBrackets != 0 && getInput().charAt(getInputLength() - 1) != '(') {
                 setInput(")");
                 countOpenBrackets -= 1;
             }
             return input;
         }
-        return input;
+        return error;
     }
     public String commaPressed() {
         if(!equalPressed) {
             setInput(",");
             return input;
         }
-        return input;
+        return error;
     }
     public String equalPressed() {
         if(!equalPressed) {
@@ -107,22 +126,34 @@ public class Input {
                 clear();
                 return input;
             } else {
-                if (countOpenBrackets != 0) {
-                    for(int i = 0; i <= countOpenBrackets; i++) {
-                        setInput(")");
-                        countOpenBrackets -= 1;
-                    }
+                while (countOpenBrackets != 0) {
+                    setInput(")");
+                    countOpenBrackets -=1;
                 }
                 setInput(" = \n");
+                countOpenBrackets = 0;
                 equalPressed = true;
                 return parseToHtml(getInput());
             }
         }
-        return input;
+        countOpenBrackets = 0;
+        return parseToHtml(getInput());
     }
     public String clearPressed() {
         equalPressed = false;
         clear();
         return input;
     }
+    public String removeLastCharacter(String str) {
+        String result = null;
+        if ((str != null) && (str.length() > 0)) {
+            result = str.substring(0, str.length() - 1);
+        }
+        return result;
+    }
+    public String delPressed() {
+        input = removeLastCharacter(input);
+        return input;
+    }
+
 }
