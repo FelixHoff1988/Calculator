@@ -133,7 +133,8 @@ public class Input {
                     setInput(")");
                     countOpenBrackets -=1;
                 }
-                parse.splicer(input);
+                int neu = parse.searchFor(input, "(");
+                System.out.println("Da:" + neu +"\n\n");
                 setInput(" = \n");
                 countOpenBrackets = 0;
                 equalPressed = true;
