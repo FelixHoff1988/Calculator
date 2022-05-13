@@ -133,8 +133,14 @@ public class Input {
                     setInput(")");
                     countOpenBrackets -=1;
                 }
-                int neu = parse.searchFor(input, "(");
-                System.out.println("Da:" + neu +"\n\n");
+                String[] splice = parse.splicer(input);
+                int len = splice.length;
+                for (int i = 0 ; i<len;i++){
+                    System.out.println(splice[i]);
+                }
+                int closer = parse.firstCloseBracket(splice);
+                System.out.println("CloseBracket at: " +closer);
+
                 setInput(" = \n");
                 countOpenBrackets = 0;
                 equalPressed = true;
