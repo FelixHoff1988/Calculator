@@ -40,7 +40,7 @@ import javax.swing.border.LineBorder;
  */
 public class ExampleApplication extends SwingApp {
 	public static boolean showComponents = false;
-    public MathBasics basics = new MathBasics();
+
     public Input input = new Input();
     public Dimension d;
 	/**

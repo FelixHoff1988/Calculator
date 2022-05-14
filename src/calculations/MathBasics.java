@@ -1,4 +1,5 @@
 package calculations;
+
 import gui.ExampleApplication;
 
 public class MathBasics {
@@ -7,11 +8,12 @@ public class MathBasics {
     public float result = 0;
     public char operator;
 
-    public void setValueOne(float value) {
+    public void setValueOne(int value) {
         if(result != 0) {
-            valueOne = value;
+
+            valueOne = (float) value;
         } else {
-            result = value;
+            result = (float) value;
         }
     }
     public float getValueOne() {
@@ -68,20 +70,15 @@ public class MathBasics {
         }
     }
 
-    public String calculate() {
-        String res;
-        if(getOperator() == '+') {
+    public void calculate(String slice) {
+        if(slice.equals("+")) {
             addition();
-        } else if(getOperator() == '-') {
+        } else if(slice.equals("-")) {
             minus();
-        } else if(getOperator() == '*') {
+        } else if(slice.equals("*")) {
             mult();
-        } else if (getOperator() == '/') {
+        } else if (slice.equals("/")) {
             divide();
         }
-        res = Float.toString(result);
-        return res;
     }
-
-
 }

@@ -1,27 +1,41 @@
 package calculations;
 
 public class Parser {
+    public MathBasics basics = new MathBasics();
     public Parser() {
 
     }
+    public String echo(String input) {
+        String[] slices = slicer(input);
+        int start = lastOpenBracket(slices)+1;
+        int end = firstCloseBracket(slices)-1;
+        float result = 0;
+            sliceCheck(slices[start]);
+            sliceCheck(slices[end]);
+            sliceCheck(slices[start+1]);
+        result = basics.getResult();
 
-    public String[] splicer(String input) {
-        String transcript = input.replaceAll("\\( - ", "(- ").replaceAll("\\(", "( ").replaceAll("\\)", " )");
-        String[] splices = transcript.split(" ");
-        return splices;
+        String answer = Float.toString(result);
+        return answer;
     }
-    public int lastOpenBracket(String[] splices) {
+    public String[] slicer(String input) {
+        String transcript = input.replaceAll("\\( - ", "(- ").replaceAll("\\(", "( ").replaceAll("\\)", " )");
+        String[] slices = transcript.split(" ");
+        int len = slices.length;
+        for (int i = 0; i <len; i++){
+            System.out.println(slices[i]);
+        }
+
+        return slices;
+    }
+    public int lastOpenBracket(String[] slices) {
         int Brackets = 0;
         int equalizer = 0;
         int Position = 0;
-        int lengthSplices = splices.length;
+        int lengthSplices = slices.length;
         for(int i = 0; i<lengthSplices;i++) {
-            if(splices[i].equals("(")) {
+            if(slices[i].equals("(")) {
                 Brackets++;
-            }
-        }
-        for (int i = 0; i <lengthSplices; i++) {
-            if(splices[i].equals("(")){
                 equalizer++;
             }
             if(equalizer == Brackets) {
@@ -31,51 +45,53 @@ public class Parser {
         }
         return Position;
     }
-    public int firstCloseBracket(String[] splices) {
+    public int firstCloseBracket(String[] slices) {
         int Position = 0;
-        int len = splices.length;
+        int len = slices.length;
         for (int i = 0; i<len; i++){
-            if(splices[i].equals(")")) {
+            if(slices[i].equals(")")) {
                 Position = i;
                 break;
             }
         }
         return Position;
     }
-    public int numCheck(String splice) {
-        char firstChar = splice.charAt(0);
+    public void sliceCheck(String slice) {
+        char firstChar = slice.charAt(0);
         int number = 0;
+        int value = 0;
         if(firstChar =='0') {
-            number = Integer.parseInt(splice);
-            return number;
+            number = Integer.parseInt(slice);
+            basics.setValueOne(number);
         } else if (firstChar == '1') {
-            number = Integer.parseInt(splice);
-            return number;
+            number = Integer.parseInt(slice);
+            basics.setValueOne(number);
         } else if (firstChar == '2') {
-            number = Integer.parseInt(splice);
-            return number;
+            number = Integer.parseInt(slice);
+            basics.setValueOne(number);
         } else if (firstChar == '3') {
-            number = Integer.parseInt(splice);
-            return number;
+            number = Integer.parseInt(slice);
+            basics.setValueOne(number);
         } else if (firstChar == '4') {
-            number = Integer.parseInt(splice);
-            return number;
+            number = Integer.parseInt(slice);
+            basics.setValueOne(number);
         } else if (firstChar == '5') {
-            number = Integer.parseInt(splice);
-            return number;
+            number = Integer.parseInt(slice);
+            basics.setValueOne(number);
         } else if (firstChar == '6') {
-            number = Integer.parseInt(splice);
-            return number;
+            number = Integer.parseInt(slice);
+            basics.setValueOne(number);
         } else if (firstChar == '7') {
-            number = Integer.parseInt(splice);
-            return number;
+            number = Integer.parseInt(slice);
+            basics.setValueOne(number);
         } else if (firstChar == '8') {
-            number = Integer.parseInt(splice);
-            return number;
+            number = Integer.parseInt(slice);
+            basics.setValueOne(number);
         } else if (firstChar == '9') {
-            number = Integer.parseInt(splice);
-            return number;
+            number = Integer.parseInt(slice);
+            basics.setValueOne(number);
+        } else {
+            basics.calculate(slice);
         }
-        return number;
     }
 }

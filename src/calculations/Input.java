@@ -133,7 +133,7 @@ public class Input {
                     setInput(")");
                     countOpenBrackets -=1;
                 }
-                String[] splice = parse.splicer(input);
+                String[] splice = parse.slicer(input);
                 int len = splice.length;
                 for (int i = 0 ; i<len;i++){
                     System.out.println(splice[i]);
@@ -145,7 +145,7 @@ public class Input {
                 countOpenBrackets = 0;
                 equalPressed = true;
 
-                return parseToHtml(getInput());
+                return parseToHtml(parse.echo(input));
             }
         }
         countOpenBrackets = 0;
