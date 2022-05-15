@@ -1,19 +1,17 @@
 package calculations;
 
-import gui.ExampleApplication;
-
 public class MathBasics {
     public float valueOne = 0;
     public float valueTwo = 0;
     public float result = 0;
     public char operator;
 
-    public void setValueOne(int value) {
+    public void setValueOne(float value) {
         if(result != 0) {
 
-            valueOne = (float) value;
+            valueOne = value;
         } else {
-            result = (float) value;
+            result = value;
         }
     }
     public float getValueOne() {
@@ -48,7 +46,7 @@ public class MathBasics {
         }
     }
 
-    public void minus() {
+    public void substraction() {
         if(getResult()== 0) {
             result = valueOne;
         } else {
@@ -75,14 +73,14 @@ public class MathBasics {
     }
 
     public void calculate(String slice) {
-        if(slice.equals("+")) {
-            addition();
-        } else if(slice.equals("-")) {
-            minus();
-        } else if(slice.equals("*")) {
+        if(slice.equals("*")) {
             mult();
-        } else if (slice.equals("/")) {
+        } else if(slice.equals("/")) {
             divide();
+        } else if(slice.equals("+")) {
+            addition();
+        } else if (slice.equals("-")) {
+            substraction();
         }
     }
 }
