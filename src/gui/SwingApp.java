@@ -83,8 +83,9 @@ public abstract class SwingApp {
      */
 	protected void init(final JFrame frame) {
         frame.setJMenuBar(createMenuBar());
-        frame.add(createKeyboard(), BorderLayout.CENTER);
         frame.add(createStatusBar(status), BorderLayout.NORTH);
+        frame.add(createKeyboard(), BorderLayout.CENTER);
+
         Component navi = createNavigator();
         if (navi != null) {
             frame.add(navi, BorderLayout.WEST);

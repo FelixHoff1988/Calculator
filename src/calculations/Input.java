@@ -137,6 +137,7 @@ public class Input {
                     countOpenBrackets -=1;
                 }
                 String calculated = parse.echo(input);
+
                 calculated = calculated.replaceAll("\\.",",");
                 String answerer = input + " = \n" + calculated;
                 if(answerer.charAt(answerer.length() - 2) == ',' && answerer.charAt(answerer.length() - 1) == '0') {
@@ -153,6 +154,7 @@ public class Input {
     }
     public String clearPressed() {
         equalPressed = false;
+        parse.setError("OK");
         clear();
         return input;
     }

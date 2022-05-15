@@ -3,9 +3,15 @@ package calculations;
 public class Parser {
     public MathBasics basics = new MathBasics();
     String error = "OK";
+
     public Parser() {
 
     }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
     public String echo(String input) {
         String[] slices = slicer(input);
         String answer ="";

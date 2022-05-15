@@ -20,7 +20,6 @@
  */
 package gui;
 
-import calculations.MathBasics;
 import calculations.Input;
 
 import java.awt.*;
@@ -29,6 +28,7 @@ import java.awt.event.ActionListener;
 import java.awt.Dimension;
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 
@@ -38,7 +38,7 @@ import javax.swing.border.LineBorder;
  * @author nwulff
  *
  */
-public class ExampleApplication extends SwingApp {
+public class Calculator extends SwingApp {
 	public static boolean showComponents = false;
 
     public Input input = new Input();
@@ -46,7 +46,7 @@ public class ExampleApplication extends SwingApp {
 	/**
 	 * 
 	 */
-	public ExampleApplication() {
+	public Calculator() {
 		getFrame().setTitle("Signum");
 	}
 
@@ -154,15 +154,18 @@ public class ExampleApplication extends SwingApp {
         return mb;
 	}
 
-    public JPanel newKey(JPanel GridBag, String nameButton, int xPos, int yPos, int width, int height, int gridwidth, int gridheight) {
+    public JPanel newButton(JPanel GridBag, String nameButton, int xPos, int yPos, int gridwidth, int gridheight) {
         JButton button = new JButton(nameButton);
         button.setName(nameButton);
         GridBagConstraints gbc = new GridBagConstraints();
-        button.setPreferredSize(new Dimension(width,height));
-        gbc.gridx = xPos;
-        gbc.gridy = yPos;
+        GridBag.setBorder(new EmptyBorder(3,3,3,3));
+        gbc.fill = GridBagConstraints.BOTH;
         gbc.gridwidth = gridwidth;
         gbc.gridheight = gridheight;
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+        gbc.gridx = xPos;
+        gbc.gridy = yPos;
         GridBag.add(button, gbc);
         actionHandler(button);
         return GridBag;
@@ -238,39 +241,37 @@ public class ExampleApplication extends SwingApp {
 
     protected JPanel createKeyboard(){
         GridBagLayout layout = new GridBagLayout();
-        GridBagConstraints gbc = new GridBagConstraints();
         JPanel GridBag = new JPanel(layout);
-        Dimension d = new Dimension(getFrame().getWidth(),getFrame().getHeight());
 
-        newKey(GridBag, "(", 0,0, (d.width/4)-5,(d.height/6)-10, 1, 1);
-        newKey(GridBag, ")", 1,0, (d.width/4)-5,(d.height/6)-10, 1, 1);
-        newKey(GridBag, "del", 2,0, (d.width/4)-5,(d.height/6)-10, 1, 1);
-        newKey(GridBag, "C", 3,0, (d.width/4)-5,(d.height/6)-10,1, 1);
+        newButton(GridBag, "(", 0,0,1, 1);
+        newButton(GridBag, ")", 1,0, 1, 1);
+        newButton(GridBag, "del", 2,0, 1, 1);
+        newButton(GridBag, "C", 3,0, 1, 1);
 
-        newKey(GridBag, "^2", 0,1, (w/4)-5,45, 1, 1);
-        newKey(GridBag, "^x", 1,1, (w/4)-5,45, 1, 1);
-        newKey(GridBag, "^1/2", 2,1, (w/4)-5,45, 1, 1);
-        newKey(GridBag, "^1/n", 3,1, (w/4)-5,45, 1, 1);
+        newButton(GridBag, "^2", 0,1, 1, 1);
+        newButton(GridBag, "^x", 1,1, 1, 1);
+        newButton(GridBag, "^1/2", 2,1, 1, 1);
+        newButton(GridBag, "^1/n", 3,1, 1, 1);
 
-        newKey(GridBag, "7", 0,2, (w/4)-5,45, 1, 1);
-        newKey(GridBag, "8", 1,2, (w/4)-5,45, 1, 1);
-        newKey(GridBag, "9", 2,2, (w/4)-5,45, 1, 1);
-        newKey(GridBag, "+", 3,2, (w/4)-5,45, 1, 1);
+        newButton(GridBag, "7", 0,2, 1, 1);
+        newButton(GridBag, "8", 1,2, 1, 1);
+        newButton(GridBag, "9", 2,2, 1, 1);
+        newButton(GridBag, "+", 3,2, 1, 1);
 
-        newKey(GridBag, "4", 0,3, (w/4)-5,45, 1, 1);
-        newKey(GridBag, "5", 1,3, (w/4)-5,45, 1, 1);
-        newKey(GridBag, "6", 2,3, (w/4)-5,45, 1, 1);
-        newKey(GridBag, "-", 3,3, (w/4)-5,45, 1, 1);
+        newButton(GridBag, "4", 0,3, 1, 1);
+        newButton(GridBag, "5", 1,3, 1, 1);
+        newButton(GridBag, "6", 2,3, 1, 1);
+        newButton(GridBag, "-", 3,3, 1, 1);
 
-        newKey(GridBag, "1", 0,4, (w/4)-5,45, 1, 1);
-        newKey(GridBag, "2", 1,4, (w/4)-5,45, 1, 1);
-        newKey(GridBag, "3", 2,4, (w/4)-5,45, 1, 1);
-        newKey(GridBag, "*", 3,4, (w/4)-5,45, 1, 1);
+        newButton(GridBag, "1", 0,4, 1, 1);
+        newButton(GridBag, "2", 1,4, 1, 1);
+        newButton(GridBag, "3", 2,4, 1, 1);
+        newButton(GridBag, "*", 3,4, 1, 1);
 
-        newKey(GridBag, ",", 0,5, (w/4)-5,45, 1, 1);
-        newKey(GridBag, "0", 1,5, (w/4)-5,45, 1, 1);
-        newKey(GridBag, "=", 2,5, (w/4)-5,45, 1, 1);
-        newKey(GridBag, "/", 3,5, (w/4)-5,45, 1, 1);
+        newButton(GridBag, ",", 0,5, 1, 1);
+        newButton(GridBag, "0", 1,5, 1, 1);
+        newButton(GridBag, "=", 2,5, 1, 1);
+        newButton(GridBag, "/", 3,5, 1, 1);
 
         return GridBag;
     }
@@ -279,8 +280,8 @@ public class ExampleApplication extends SwingApp {
      * @param args
      */
     public static void main(String[] args) {
-        ExampleApplication.showComponents = true;
-        SwingApp app = new ExampleApplication();
+        Calculator.showComponents = true;
+        SwingApp app = new Calculator();
         app.startUp();
     }
 }
