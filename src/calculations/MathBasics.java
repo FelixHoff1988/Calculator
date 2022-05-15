@@ -32,6 +32,10 @@ public class MathBasics {
         return operator;
     }
 
+    public void setResult(float result) {
+        this.result = result;
+    }
+
     public float getResult() {
         return result;
     }

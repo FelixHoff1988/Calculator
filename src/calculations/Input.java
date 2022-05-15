@@ -34,7 +34,7 @@ public class Input {
         input = "";
     }
     public String parseToHtml(String input) {
-        System.out.println(this.input);
+        /*System.out.println(this.input);*/
         html = "<html><p align=" + '"' +"right" + '"' +">"+ input.replaceAll("<", "&lt;").replaceAll(">","&gt").replaceAll("\n","<br>") + "</p></html>";
         return html;
     }
@@ -133,19 +133,19 @@ public class Input {
                     setInput(")");
                     countOpenBrackets -=1;
                 }
-                String[] splice = parse.slicer(input);
-                int len = splice.length;
-                for (int i = 0 ; i<len;i++){
-                    System.out.println(splice[i]);
-                }
-                int closer = parse.firstCloseBracket(splice);
-                System.out.println("CloseBracket at: " +closer);
 
-                setInput(" = \n");
+
+                /*for (int i = 0 ; i<len;i++){
+                    System.out.println(splice[i]);
+                }*/
+                String answer = parse.echo(input);
+                answer += " = \n";
+/*
+                setInput(" = \n");*/
                 countOpenBrackets = 0;
                 equalPressed = true;
 
-                return parseToHtml(parse.echo(input));
+                return parseToHtml(answer);
             }
         }
         countOpenBrackets = 0;

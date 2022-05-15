@@ -16,10 +16,11 @@ public class Parser {
         result = basics.getResult();
 
         String answer = Float.toString(result);
+        basics.setResult(0);
         return answer;
     }
     public String[] slicer(String input) {
-        String transcript = input.replaceAll("\\( - ", "(- ").replaceAll("\\(", "( ").replaceAll("\\)", " )");
+        String transcript = "( " + input.replaceAll("\\( - ", "(- ").replaceAll("\\(", "( ").replaceAll("\\)", " )".replaceAll("", " = \\\n")) + " )";
         String[] slices = transcript.split(" ");
         int len = slices.length;
         for (int i = 0; i <len; i++){
@@ -34,17 +35,22 @@ public class Parser {
         int Position = 0;
         int lengthSplices = slices.length;
         for(int i = 0; i<lengthSplices;i++) {
-            if(slices[i].equals("(")) {
+            if (slices[i].equals("(")) {
                 Brackets++;
+            }
+        }
+        for(int j = 0; j<lengthSplices;j++) {
+            if (slices[j].equals("(")) {
                 equalizer++;
             }
-            if(equalizer == Brackets) {
-                Position = i;
+            if (equalizer == Brackets) {
+                Position = j;
                 break;
             }
         }
         return Position;
     }
+
     public int firstCloseBracket(String[] slices) {
         int Position = 0;
         int len = slices.length;
@@ -93,5 +99,9 @@ public class Parser {
         } else {
             basics.calculate(slice);
         }
+    }
+    public void orderOperations(String slice){
+        String[] operators;
+        int[] operatorPositions;
     }
 }
