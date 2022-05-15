@@ -3,6 +3,7 @@ package calculations;
 public class MathBasics {
     public float valueOne = 0;
     public float valueTwo = 0;
+    public String nullDivider = "Wer durch Null teilt, isst auch kleine Kinder!";
     public float result = 0;
     public char operator;
 
@@ -46,7 +47,7 @@ public class MathBasics {
         }
     }
 
-    public void substraction() {
+    public void subtraction() {
         if(getResult()== 0) {
             result = valueOne;
         } else {
@@ -54,7 +55,7 @@ public class MathBasics {
         }
     }
 
-    public void mult() {
+    public void multiply() {
         if(getResult()== 0 || getValueOne() == 0) {
             result = 0;
         } else {
@@ -74,13 +75,13 @@ public class MathBasics {
 
     public void calculate(String slice) {
         if(slice.equals("*")) {
-            mult();
+            multiply();
         } else if(slice.equals("/")) {
             divide();
         } else if(slice.equals("+")) {
             addition();
         } else if (slice.equals("-")) {
-            substraction();
+            subtraction();
         }
     }
 }

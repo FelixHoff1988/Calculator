@@ -2,16 +2,15 @@ package calculations;
 
 public class Parser {
     public MathBasics basics = new MathBasics();
+    String error = "OK";
     public Parser() {
 
     }
     public String echo(String input) {
         String[] slices = slicer(input);
-
+        String answer ="";
         float result = 0;
         while (slices.length>1){
-            int start = lastOpenBracket(slices)+1;
-            int end = firstCloseBracket(slices)-1;
             String[] bracketSlices = new String[firstCloseBracket(slices)+1-lastOpenBracket(slices)];
             int bracketStart = 0;
             for(int j = lastOpenBracket(slices); j<=firstCloseBracket(slices); j++){
@@ -24,18 +23,24 @@ public class Parser {
                 slices = removeElement(slices,pointer);
             }
             String resolvedBracket = sortOperations(bracketSlices);
+            if (error.equals("OK") == false) {
+                return error;
+            }
             slices = insertElement(slices, resolvedBracket, pointer);
+
         }
-
-
+        if(slices.length==1){
+            answer =slices[0];
+            return answer;
+        }
         result = basics.getResult();
 
-        String answer = Float.toString(result);
+        answer = Float.toString(result);
         basics.setResult(0);
         return answer;
     }
     public String[] slicer(String input) {
-        String transcript = "( " + input.replaceAll("\\( - ", "(- ").replaceAll("\\(", "( ").replaceAll("\\)", " )") + " )";
+        String transcript = "( " + input.replaceAll("\\( - ", "(- ").replaceAll(",", ".").replaceAll("\\(", "( ").replaceAll("\\)", " )") + " )";
         String[] slices = transcript.split(" ");
         int len = slices.length;
         for (int i = 0; i <len; i++){
@@ -80,53 +85,10 @@ public class Parser {
     public void sliceCheck(String slice) {
         char firstChar = slice.charAt(0);
         float number = 0;
-        if(firstChar =='0') {
-            number = Float.parseFloat(slice);
-            basics.setValueOne(number);
-        } else if (firstChar == '1') {
-            number = Float.parseFloat(slice);
-            basics.setValueOne(number);
-        } else if (firstChar == '2') {
-            number = Float.parseFloat(slice);
-            basics.setValueOne(number);
-        } else if (firstChar == '3') {
-            number = Float.parseFloat(slice);
-            basics.setValueOne(number);
-        } else if (firstChar == '4') {
-            number = Float.parseFloat(slice);
-            basics.setValueOne(number);
-        } else if (firstChar == '5') {
-            number = Float.parseFloat(slice);
-            basics.setValueOne(number);
-        } else if (firstChar == '6') {
-            number = Float.parseFloat(slice);
-            basics.setValueOne(number);
-        } else if (firstChar == '7') {
-            number = Float.parseFloat(slice);
-            basics.setValueOne(number);
-        } else if (firstChar == '8') {
-            number = Float.parseFloat(slice);
-            basics.setValueOne(number);
-        } else if (firstChar == '9') {
-            number = Float.parseFloat(slice);
-            basics.setValueOne(number);
-        } else {
-            basics.calculate(slice);
-        }
+        number = Float.parseFloat(slice);
+        basics.setValueOne(number);
     }
-    public String order(String slice) {
-        char firstChar = slice.charAt(0);
-        if(firstChar =='*') {
-            return "*";
-        } else if (firstChar == '/') {
-            return "/";
-        } else if (firstChar == '+') {
-            return "+";
-        } else if (firstChar == '-') {
-            return "-";
-        }
-        return "bracket";
-    }
+
     public String sortOperations(String[] bracketSlices){
         String[] slices = bracketSlices;
         for (int i = 0; i<slices.length; i++){
@@ -145,6 +107,10 @@ public class Parser {
             if(binder) {
                 for (int i = 0; i< slices.length;i++){
                     if(slices[i].equals("*")|| slices[i].equals("/")){
+                        if(slices[i].equals("/") && slices[i+1].equals("0")){
+                            error = "Wer durch null teilt, isst auch Kinder!";
+                            return error;
+                        }
                         slices = calcAndReplace(slices,i);
                     }
                 }
@@ -158,12 +124,20 @@ public class Parser {
         }
         String calculated = slices[1];
         return calculated;
-
     }
 
     public String[] calcAndReplace(String[] slices, int i){
         float result = 0;
         basics.setResult(0);
+        if(slices[i-1].equals("(")){
+            String negValue = "-" + slices[i+1];
+            String[] signChange = new String[3];
+            signChange[0] = "(";
+            signChange[1] = negValue;
+            signChange[2] = ")";
+            slices = signChange;
+            return slices;
+        }
         sliceCheck(slices[i-1]);
         sliceCheck(slices[i+1]);
         basics.calculate(slices[i]);

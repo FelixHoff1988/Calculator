@@ -96,7 +96,6 @@ public class Input {
             countOpenBrackets += 1;
             closeBracketPressed();
             return input;
-
         }
         return error;
     }
@@ -115,7 +114,11 @@ public class Input {
     }
     public String commaPressed() {
         if(!equalPressed) {
-            setInput(",");
+            if (getInput().charAt(getInputLength() - 1) == ' ') {
+                setInput("0,");
+            }else {
+                setInput(",");
+            }
             return input;
         }
         return error;
@@ -133,19 +136,16 @@ public class Input {
                     setInput(")");
                     countOpenBrackets -=1;
                 }
-
-
-                /*for (int i = 0 ; i<len;i++){
-                    System.out.println(splice[i]);
-                }*/
-                String answer = parse.echo(input);
-                answer += " = \n";
-/*
-                setInput(" = \n");*/
+                String calculated = parse.echo(input);
+                calculated = calculated.replaceAll("\\.",",");
+                String answerer = input + " = \n" + calculated;
+                if(answerer.charAt(answerer.length() - 2) == ',' && answerer.charAt(answerer.length() - 1) == '0') {
+                    answerer = removeLastCharacter(answerer);
+                    answerer = removeLastCharacter(answerer);
+                }
                 countOpenBrackets = 0;
                 equalPressed = true;
-
-                return parseToHtml(answer);
+                return parseToHtml(answerer);
             }
         }
         countOpenBrackets = 0;
@@ -164,7 +164,13 @@ public class Input {
         return result;
     }
     public String delPressed() {
-        input = removeLastCharacter(input);
+        if(getInput().charAt(getInputLength() - 1) == ' '){
+            for(int i = 0; i <3; i++) {
+                input = removeLastCharacter(input);
+            }
+        } else {
+            input = removeLastCharacter(input);
+        }
         return input;
     }
 

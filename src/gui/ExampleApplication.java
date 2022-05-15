@@ -42,7 +42,7 @@ public class ExampleApplication extends SwingApp {
 	public static boolean showComponents = false;
 
     public Input input = new Input();
-    public Dimension d;
+    public Dimension dim;
 	/**
 	 * 
 	 */
@@ -71,7 +71,7 @@ public class ExampleApplication extends SwingApp {
         int height = (font.getSize() + 8)*3;
         int width = 390;
         status.setText(msg);
-        Dimension dim = new Dimension(width, height);
+        dim = new Dimension(width, height);
         status.setMaximumSize(dim);
         status.setMinimumSize(dim);
         status.setPreferredSize(dim);
