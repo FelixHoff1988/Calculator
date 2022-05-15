@@ -7,14 +7,26 @@ public class Parser {
     }
     public String echo(String input) {
         String[] slices = slicer(input);
-        int start = lastOpenBracket(slices)+1;
-        int end = firstCloseBracket(slices)-1;
+
         float result = 0;
-        sliceCheck(slices[start]);
-        sliceCheck(slices[end]);
-        sliceCheck(slices[start+1]);
-        String bracketContent = input.replaceAll(" ","").substring(start-1,end);
-        sortOperations(bracketContent);
+        while (slices.length>1){
+            int start = lastOpenBracket(slices)+1;
+            int end = firstCloseBracket(slices)-1;
+            String[] bracketSlices = new String[firstCloseBracket(slices)+1-lastOpenBracket(slices)];
+            int bracketStart = 0;
+            for(int j = lastOpenBracket(slices); j<=firstCloseBracket(slices); j++){
+                bracketSlices[bracketStart] = slices[j];
+                bracketStart++;
+            }
+            int pointer = lastOpenBracket(slices);
+            int p2 =firstCloseBracket(slices);
+            for(int i = pointer; i<=p2; i++){
+                slices = removeElement(slices,pointer);
+            }
+            String resolvedBracket = sortOperations(bracketSlices);
+            slices = insertElement(slices, resolvedBracket, pointer);
+        }
+
 
         result = basics.getResult();
 
@@ -115,9 +127,8 @@ public class Parser {
         }
         return "bracket";
     }
-    public String sortOperations(String bracketContent){
-        bracketContent = bracketContent.replaceAll("\\+", " + ").replaceAll("-", " - ").replaceAll("\\*", " * ").replaceAll("/", " / ");
-        String[] slices = slicer(bracketContent);
+    public String sortOperations(String[] bracketSlices){
+        String[] slices = bracketSlices;
         for (int i = 0; i<slices.length; i++){
             System.out.println(slices[i]);
         }
