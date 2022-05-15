@@ -1,7 +1,5 @@
 package calculations;
 
-import java.util.ArrayList;
-
 public class Parser {
     public MathBasics basics = new MathBasics();
     public Parser() {
@@ -16,7 +14,8 @@ public class Parser {
         sliceCheck(slices[end]);
         sliceCheck(slices[start+1]);
         String bracketContent = input.replaceAll(" ","").substring(start-1,end);
-        orderOperations(bracketContent);
+        sortOperations(bracketContent);
+
         result = basics.getResult();
 
         String answer = Float.toString(result);
@@ -68,9 +67,7 @@ public class Parser {
     }
     public void sliceCheck(String slice) {
         char firstChar = slice.charAt(0);
-        int num = 0;
         float number = 0;
-        int value = 0;
         if(firstChar =='0') {
             number = Float.parseFloat(slice);
             basics.setValueOne(number);
@@ -118,32 +115,54 @@ public class Parser {
         }
         return "bracket";
     }
-    public void orderOperations(String bracketContent){
+    public String sortOperations(String bracketContent){
         bracketContent = bracketContent.replaceAll("\\+", " + ").replaceAll("-", " - ").replaceAll("\\*", " * ").replaceAll("/", " / ");
         String[] slices = slicer(bracketContent);
-        float result = 0;
         for (int i = 0; i<slices.length; i++){
             System.out.println(slices[i]);
         }
         while(slices.length>3) {
-            for (int i = 0; i<slices.length; i++){
-                if(slices[i].equals("*") || slices[i].equals("/") || slices[i].equals("+") || slices[i].equals("-")){
-                    basics.setResult(0);
-                    sliceCheck(slices[i-1]);
-                    sliceCheck(slices[i+1]);
-                    basics.calculate(slices[i]);
-                    result = basics.getResult();
-                    String res = Float.toString(result);
-                    slices = removeElement(slices,i-1);
-                    slices = removeElement(slices,i-1);
-                    slices = removeElement(slices,i-1);
-                    slices = insertElement(slices, res, i-1);
+            boolean binder = false;
+            for (int k = 0; k<slices.length;k++) {
+                if(slices[k].equals("*")|| slices[k].equals("/")){
+                    binder = true;
+                    break;
+                } else {
+                    binder = false;
+                }
+            }
+            if(binder) {
+                for (int i = 0; i< slices.length;i++){
+                    if(slices[i].equals("*")|| slices[i].equals("/")){
+                        slices = calcAndReplace(slices,i);
+                    }
+                }
+            } else {
+                for (int j = 0; j < slices.length; j++) {
+                    if(slices[j].equals("+")|| slices[j].equals("-")) {
+                        slices = calcAndReplace(slices, j);
+                    }
                 }
             }
         }
-        int check = 1;
-        System.out.println(check);
+        String calculated = slices[1];
+        return calculated;
 
+    }
+
+    public String[] calcAndReplace(String[] slices, int i){
+        float result = 0;
+        basics.setResult(0);
+        sliceCheck(slices[i-1]);
+        sliceCheck(slices[i+1]);
+        basics.calculate(slices[i]);
+        result = basics.getResult();
+        String res = Float.toString(result);
+        slices = removeElement(slices,i-1);
+        slices = removeElement(slices,i-1);
+        slices = removeElement(slices,i-1);
+        slices = insertElement(slices, res, i-1);
+        return slices;
     }
     public String[] removeElement(String[] slices, int index) {
         String[] newSlices = new String[slices.length-1];
