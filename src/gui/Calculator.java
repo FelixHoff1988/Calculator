@@ -65,7 +65,6 @@ public class Calculator extends SwingApp {
             statusBar.setBackground(Color.white);
 	        statusBar.setBorder(new LineBorder(Color.DARK_GRAY,1));
         }
-        statusBar.setToolTipText("dies ist die StatusBar");
         String msg = "0";
         Font font = status.getFont();
         int height = (font.getSize() + 8)*3;
@@ -157,9 +156,18 @@ public class Calculator extends SwingApp {
     public JPanel newButton(JPanel GridBag, String nameButton, int xPos, int yPos, int gridwidth, int gridheight) {
         JButton button = new JButton(nameButton);
         button.setName(nameButton);
+        Color transparent = new Color(0f,0f,0f,0f);
+        button.setForeground(transparent);
+
+        button.setBackground(transparent);
+
+        char chara[] = new char[nameButton.length()];
+        chara = nameButton.toCharArray();
+        button.setBorder(new DrawButton(20,chara));
         GridBagConstraints gbc = new GridBagConstraints();
         GridBag.setBorder(new EmptyBorder(3,3,3,3));
         gbc.fill = GridBagConstraints.BOTH;
+        gbc.insets= new Insets(2,2,2,2);
         gbc.gridwidth = gridwidth;
         gbc.gridheight = gridheight;
         gbc.weightx = 1;
@@ -172,71 +180,69 @@ public class Calculator extends SwingApp {
     }
 
     public void actionHandler(JButton pbutton) {
-        pbutton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                switch (pbutton.getName()) {
-                    case "0":
-                        setStatusMsg(input.zeroPressed());
-                        break;
-                    case "1":
-                        setStatusMsg(input.numPressed("1"));
-                        break;
-                    case "2":
-                        setStatusMsg(input.numPressed("2"));
-                        break;
-                    case "3":
-                        setStatusMsg(input.numPressed("3"));
-                        break;
-                    case "4":
-                        setStatusMsg(input.numPressed("4"));
-                        break;
-                    case "5":
-                        setStatusMsg(input.numPressed("5"));
-                        break;
-                    case "6":
-                        setStatusMsg(input.numPressed("6"));
-                        break;
-                    case "7":
-                        setStatusMsg(input.numPressed("7"));
-                        break;
-                    case "8":
-                        setStatusMsg(input.numPressed("8"));
-                        break;
-                    case "9":
-                        setStatusMsg(input.numPressed("9"));
-                        break;
-                    case "+":
-                        setStatusMsg((input.operatorPressed(" + ")));
-                        break;
-                    case "-":
-                        setStatusMsg((input.operatorPressed(" - ")));
-                        break;
-                    case "*":
-                        setStatusMsg((input.operatorPressed(" * ")));
-                        break;
-                    case "/":
-                        setStatusMsg((input.operatorPressed(" / ")));
-                        break;
-                    case "(":
-                        setStatusMsg(input.openBracketPressed());
-                        break;
-                    case ")":
-                        setStatusMsg(input.closeBracketPressed());
-                        break;
-                    case ",":
-                        setStatusMsg(input.commaPressed());
-                        break;
-                    case "=":
-                        setStatusMsg(input.equalPressed());
-                        break;
-                    case "C":
-                        setStatusMsg(input.clearPressed());
-                        break;
-                    case "del":
-                        setStatusMsg(input.delPressed());
-                }
-            }
-        });
+        pbutton.addActionListener(evt -> {
+        switch (pbutton.getName()) {
+            case "0":
+                setStatusMsg(input.zeroPressed());
+                break;
+            case "1":
+                setStatusMsg(input.numPressed("1"));
+                break;
+            case "2":
+                setStatusMsg(input.numPressed("2"));
+                break;
+            case "3":
+                setStatusMsg(input.numPressed("3"));
+                break;
+            case "4":
+                setStatusMsg(input.numPressed("4"));
+                break;
+            case "5":
+                setStatusMsg(input.numPressed("5"));
+                break;
+            case "6":
+                setStatusMsg(input.numPressed("6"));
+                break;
+            case "7":
+                setStatusMsg(input.numPressed("7"));
+                break;
+            case "8":
+                setStatusMsg(input.numPressed("8"));
+                break;
+            case "9":
+                setStatusMsg(input.numPressed("9"));
+                break;
+            case "+":
+                setStatusMsg((input.operatorPressed(" + ")));
+                break;
+            case "-":
+                setStatusMsg((input.operatorPressed(" - ")));
+                break;
+            case "*":
+                setStatusMsg((input.operatorPressed(" * ")));
+                break;
+            case "/":
+                setStatusMsg((input.operatorPressed(" / ")));
+                break;
+            case "(":
+                setStatusMsg(input.openBracketPressed());
+                break;
+            case ")":
+                setStatusMsg(input.closeBracketPressed());
+                break;
+            case ",":
+                setStatusMsg(input.commaPressed());
+                break;
+            case "=":
+                setStatusMsg(input.equalPressed());
+                break;
+            case "C":
+                setStatusMsg(input.clearPressed());
+                break;
+            case "del":
+                setStatusMsg(input.delPressed());
+        }
+    });
     }
 
     protected JPanel createKeyboard(){
