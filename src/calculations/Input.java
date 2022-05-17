@@ -136,6 +136,9 @@ public class Input {
                     setInput(")");
                     countOpenBrackets -=1;
                 }
+                if(input.charAt(input.length() - 1) == ',') {
+                    setInput("0");
+                }
                 String calculated = parse.echo(input);
 
                 calculated = calculated.replaceAll("\\.",",");
@@ -144,6 +147,7 @@ public class Input {
                     answerer = removeLastCharacter(answerer);
                     answerer = removeLastCharacter(answerer);
                 }
+
                 countOpenBrackets = 0;
                 equalPressed = true;
                 return parseToHtml(answerer);
@@ -166,6 +170,9 @@ public class Input {
         return result;
     }
     public String delPressed() {
+        if (getInput() == "0") {
+            return input;
+        }
         if(getInput().charAt(getInputLength() - 1) == ' '){
             for(int i = 0; i <3; i++) {
                 input = removeLastCharacter(input);

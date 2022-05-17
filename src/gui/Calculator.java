@@ -154,16 +154,17 @@ public class Calculator extends SwingApp {
 	}
 
     public JPanel newButton(JPanel GridBag, String nameButton, int xPos, int yPos, int gridwidth, int gridheight) {
-        JButton button = new JButton(nameButton);
-        button.setName(nameButton);
-        Color transparent = new Color(0f,0f,0f,0f);
-        button.setForeground(transparent);
 
-        button.setBackground(transparent);
+        customButton myButton = new customButton(nameButton);
+        myButton.setName(nameButton);
 
-        char chara[] = new char[nameButton.length()];
-        chara = nameButton.toCharArray();
-        button.setBorder(new DrawButton(20,chara));
+
+//        button.setForeground(transparent);
+//        button.setBackground(transparent);
+
+//        char chara[] = new char[nameButton.length()];
+//        chara = nameButton.toCharArray();
+//        button.setBorder(new DrawButton(20,chara));
         GridBagConstraints gbc = new GridBagConstraints();
         GridBag.setBorder(new EmptyBorder(3,3,3,3));
         gbc.fill = GridBagConstraints.BOTH;
@@ -174,8 +175,8 @@ public class Calculator extends SwingApp {
         gbc.weighty = 1;
         gbc.gridx = xPos;
         gbc.gridy = yPos;
-        GridBag.add(button, gbc);
-        actionHandler(button);
+        GridBag.add(myButton, gbc);
+        actionHandler(myButton);
         return GridBag;
     }
 

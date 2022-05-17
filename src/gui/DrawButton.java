@@ -1,9 +1,10 @@
 package gui;
 
+import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
-public class DrawButton implements Border {
+public class DrawButton extends JButton implements Border {
 
     private int radius;
     int len = 0;
@@ -12,7 +13,15 @@ public class DrawButton implements Border {
     public void setLen(int len) {
         this.len = len;
     }
-
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if (isSelected()) {
+            setBorder(BorderFactory.createEmptyBorder());
+        } else {
+            setBorder(BorderFactory.createLoweredBevelBorder());
+        }
+    }
     public void setChara(char[] character) {
         setLen(character.length);
         chara = character;
@@ -40,6 +49,7 @@ public class DrawButton implements Border {
         g.setColor(Color.black);
 
         g.drawChars(chara, 0, chara.length, (width/2)-5, (height/2)+5);
-//        g.drawRoundRect(x, y, width-1, height-1, radius, radius);
+
+        g.drawRoundRect(x, y, width-1, height-1, radius, radius);
     }
 }
