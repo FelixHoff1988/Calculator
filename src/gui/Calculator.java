@@ -33,9 +33,8 @@ import javax.swing.border.LineBorder;
 
 
 /**
- * Beispiel einer Swing Applikation mit Menu, ToolBar 
- * und einem Dialog.
- * @author nwulff
+ * Interface of a Calculator
+ * @author Felix Hoff
  *
  */
 public class Calculator extends SwingApp {
@@ -78,10 +77,6 @@ public class Calculator extends SwingApp {
         return statusBar;
 	}
 
-	/**
-	 * @return
-	 * @see de.lab4inf.gui.SwingApp#createMenuBar()
-	 */
 	@Override
 	protected JMenuBar createMenuBar() {
         JMenuBar mb = new JMenuBar();
@@ -157,14 +152,6 @@ public class Calculator extends SwingApp {
 
         customButton myButton = new customButton(nameButton);
         myButton.setName(nameButton);
-
-
-//        button.setForeground(transparent);
-//        button.setBackground(transparent);
-
-//        char chara[] = new char[nameButton.length()];
-//        chara = nameButton.toCharArray();
-//        button.setBorder(new DrawButton(20,chara));
         GridBagConstraints gbc = new GridBagConstraints();
         GridBag.setBorder(new EmptyBorder(3,3,3,3));
         gbc.fill = GridBagConstraints.BOTH;
@@ -250,15 +237,17 @@ public class Calculator extends SwingApp {
         GridBagLayout layout = new GridBagLayout();
         JPanel GridBag = new JPanel(layout);
 
+
+
         newButton(GridBag, "(", 0,0,1, 1);
         newButton(GridBag, ")", 1,0, 1, 1);
         newButton(GridBag, "del", 2,0, 1, 1);
         newButton(GridBag, "C", 3,0, 1, 1);
 
-        newButton(GridBag, "^2", 0,1, 1, 1);
-        newButton(GridBag, "^x", 1,1, 1, 1);
-        newButton(GridBag, "^1/2", 2,1, 1, 1);
-        newButton(GridBag, "^1/n", 3,1, 1, 1);
+        newButton(GridBag, "x \u00B2", 0,1, 1, 1);
+        newButton(GridBag, "x \u207F", 1,1, 1, 1);
+        newButton(GridBag, "\u221Ax", 2,1, 1, 1);
+        newButton(GridBag, "\u207F\u221Ax", 3,1, 1, 1);
 
         newButton(GridBag, "7", 0,2, 1, 1);
         newButton(GridBag, "8", 1,2, 1, 1);
@@ -283,9 +272,6 @@ public class Calculator extends SwingApp {
         return GridBag;
     }
 
-    /**
-     * @param args
-     */
     public static void main(String[] args) {
         Calculator.showComponents = true;
         SwingApp app = new Calculator();

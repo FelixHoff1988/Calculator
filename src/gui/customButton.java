@@ -1,8 +1,5 @@
 package gui;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
+import java.awt.*;
 
 import javax.swing.*;
 
@@ -28,7 +25,7 @@ public class customButton extends JButton {
     }
 
     /**
-     * Dies ist ein erster Kommentar in VR. Der Plan ist in Zukunft ausschlieslich in VR zu Coden ;-*
+     *
      *
      * @param g the <code>Graphics</code> object to protect
      */
@@ -47,6 +44,12 @@ public class customButton extends JButton {
 
         g.setColor(textColor);
         int labelDrawPosY = getSize().height/2 + (getFont().getSize())/2-2;
+        if(getSize().width < getSize().height) {
+            g.setFont(new Font("Arial", Font.PLAIN, (getSize().width)/3));
+        } else {
+            g.setFont(new Font("Arial", Font.PLAIN, (getSize().height)/3));
+        }
+
         g.drawString(buttonLabel,getSize().width/2,labelDrawPosY);
 
     }

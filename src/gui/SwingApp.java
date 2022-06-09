@@ -31,8 +31,6 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 /**
  * Skeleton of a Java Swing based GUI application.
- * @author nwulff
- *
  */
 public abstract class SwingApp {
 	private final JLabel status;
