@@ -37,6 +37,14 @@ The Project is still in progress.
 
 To get a local copy up and running follow these simple example steps.
 
+### Prerequisites
+
+This is an example of how to list things you need to use the software and how to install them.
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
+
 ### Installation
 
 1. Get and install latest Java JRE version at [https://www.oracle.com/java/technologies/downloads/](https://www.oracle.com/java/technologies/downloads/)
