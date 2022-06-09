@@ -57,12 +57,35 @@ To get a local copy up and running follow these simple example steps.
 ## Roadmap
 
 - [x] Basic arithmetic operations
-- [x] Dyck language 
+    - [x] addition
+    - [x] substraction
+    - [x] multiplication
+    - [x] division
+    - [x] equals
+    - [x] delete
+    - [x] clear
+- [x] Dyck language (Brackets)
 - [x] GUI
     - [x] Basic swing GUI
     - [ ] Custom buttons
     - [ ] Android GUI
     - [ ] iOS GUI
+ - [ ] Advanced arithmetric operations
+    - [ ] power x^2
+    - [ ] power x^n
+    - [ ] root x^1/2
+    - [ ] root x^1/n
+    - [ ] sin
+    - [ ] cos
+    - [ ] tan
+    - [ ] Log 10
+    - [ ] log e
+    - [ ] log x
+ - [ ] Remote App
+    - [ ] control panel
+    - [ ] exam mode
+    - [ ] account system
+    - [ ] server socket
 
 See the [open issues](https://github.com/FelixHoff1988/Calculator/issues) for a full list of proposed features (and known issues).
 
