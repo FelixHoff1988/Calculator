@@ -17,7 +17,7 @@ Furthermore, the calculator will have an exam mode in the future. The teacher sh
 The calculator will be available for iOS and Android 
 
 The Project is still in progress.
-
+</p>
     <br />
     <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
     <br />
