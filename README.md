@@ -14,7 +14,7 @@ The Project is still in progress.
 <br />
 <div align="center">
   <a href="https://github.com/FelixHoff1988/Calculator">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo.png" alt="Logo" width="120" height="200">
   </a>
 
 <h3 align="center">project_title</h3>
