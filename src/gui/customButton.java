@@ -27,13 +27,15 @@ public class customButton extends JButton {
 
     }
 
+    /**
+     * Dies ist ein erster Kommentar in VR. Der Plan ist in Zukunft ausschlieslich in VR zu Coden ;-*
+     *
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.setColor(buttonColor.darker());
-        g.fillRoundRect(0, 0, getSize().width, getSize().height, radius, radius);
-        g.setColor(buttonColor.brighter());
-        g.fillRoundRect(5, 5, getSize().width-5, getSize().height-5, radius, radius);
+
         if(getModel().isPressed()) {
             g.setColor(buttonColorPressed);
         } else if (getModel().isRollover()) {
@@ -41,11 +43,10 @@ public class customButton extends JButton {
         } else {
             g.setColor(buttonColor);
         }
-        g.fillRoundRect(2, 2, getSize().width-4, getSize().height-4, radius, radius);
+        g.fillRoundRect(2, 2, getSize().width-5, getSize().height-5, radius, radius);
 
         g.setColor(textColor);
         int labelDrawPosY = getSize().height/2 + (getFont().getSize())/2-2;
-
         g.drawString(buttonLabel,getSize().width/2,labelDrawPosY);
 
     }
