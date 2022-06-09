@@ -173,8 +173,12 @@ public class Input {
         if (getInput() == "0") {
             return input;
         }
-        if(getInput().charAt(getInputLength() - 1) == ' '){
-            for(int i = 0; i <3; i++) {
+        if(getInput().charAt(getInputLength() - 1) == ' ') {
+            for (int i = 0; i < 3; i++) {
+                input = removeLastCharacter(input);
+            }
+        } else if(getInput().charAt(getInputLength() - 3) == '*' && getInput().charAt(getInputLength() - 1) == '(') {
+            for (int i = 0; i < 4; i++) {
                 input = removeLastCharacter(input);
             }
         } else {
