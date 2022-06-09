@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/FelixHoff1988/Calculator">
-    <img src="images/logo.png" alt="Logo" width="200" height="250">
+    <img src="images/logo.png" alt="Logo" width="400" height="500">
   </a>
 
 <h3 align="center">Calculator</h3>
