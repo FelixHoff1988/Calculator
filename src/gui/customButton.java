@@ -43,6 +43,7 @@ public class customButton extends JButton {
         g.fillRoundRect(2, 2, getSize().width-5, getSize().height-5, radius, radius);
 
         g.setColor(textColor);
+        int labelDrawPosX= getSize().width/2 - g.getFontMetrics().stringWidth(buttonLabel)/2;
         int labelDrawPosY = getSize().height/2 + (getFont().getSize())/2-2;
         if(getSize().width < getSize().height) {
             g.setFont(new Font("Arial", Font.BOLD, (getSize().width)/3));
@@ -50,7 +51,26 @@ public class customButton extends JButton {
             g.setFont(new Font("Arial", Font.BOLD, (getSize().height)/3));
         }
 
-        g.drawString(buttonLabel,getSize().width/2,labelDrawPosY);
+        g.drawString(buttonLabel,labelDrawPosX,labelDrawPosY);
+        if(buttonLabel.charAt(0) == '\u221A'){
+            Graphics2D g2d = (Graphics2D) g.create();
+            String text = "    ";
+            FontMetrics fm = g2d.getFontMetrics();
+
+            int textHeight = fm.getHeight();
+            int textWidth = fm.stringWidth(text);
+
+            int xPos = (labelDrawPosX+10);
+            int yPos = ((getHeight() - textHeight) / 2) + fm.getAscent();
+
+            g2d.setColor(Color.BLACK);
+            g2d.drawString(text, xPos, yPos);
+
+            g2d.drawLine(xPos, yPos - fm.getAscent(), xPos + textWidth, yPos - fm.getAscent());
+
+            g2d.dispose();
+        }
+
 
     }
 

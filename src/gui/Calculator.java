@@ -246,7 +246,7 @@ public class Calculator extends SwingApp {
 
         newButton(GridBag, "x \u00B2", 0,1, 1, 1);
         newButton(GridBag, "x \u207F", 1,1, 1, 1);
-        newButton(GridBag, "\u221Ax", 2,1, 1, 1);
+        newButton(GridBag, "\u221A x", 2,1, 1, 1);
         newButton(GridBag, "\u207F\u221Ax", 3,1, 1, 1);
 
         newButton(GridBag, "7", 0,2, 1, 1);
