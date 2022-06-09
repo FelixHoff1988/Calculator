@@ -19,14 +19,14 @@ The calculator will be available for iOS and Android
 The Project is still in progress.
 </p>
     <br />
-    <a href="https://github.com/FelixHoff1988/Caluclator"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/FelixHoff1988/Calculator"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/FelixHoff1988/Caluclator">View Demo</a>
+    <a href="https://github.com/FelixHoff1988/Calculator">View Demo</a>
     ·
-    <a href="https://github.com/FelixHoff1988/Caluclator/issues">Report Bug</a>
+    <a href="https://github.com/FelixHoff1988/Calculator/issues">Report Bug</a>
     ·
-    <a href="https://github.com/FelixHoff1988/Caluclator/issues">Request Feature</a>
+    <a href="https://github.com/FelixHoff1988/Calculator/issues">Request Feature</a>
   </p>
 </div>
 
