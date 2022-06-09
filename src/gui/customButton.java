@@ -45,9 +45,9 @@ public class customButton extends JButton {
         g.setColor(textColor);
         int labelDrawPosY = getSize().height/2 + (getFont().getSize())/2-2;
         if(getSize().width < getSize().height) {
-            g.setFont(new Font("Arial", Font.PLAIN, (getSize().width)/3));
+            g.setFont(new Font("Arial", Font.BOLD, (getSize().width)/3));
         } else {
-            g.setFont(new Font("Arial", Font.PLAIN, (getSize().height)/3));
+            g.setFont(new Font("Arial", Font.BOLD, (getSize().height)/3));
         }
 
         g.drawString(buttonLabel,getSize().width/2,labelDrawPosY);
