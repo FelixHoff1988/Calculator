@@ -59,7 +59,7 @@ To get a local copy up and running follow these simple example steps.
 - [x] Basic arithmetic operations
 - [x] Dyck language 
 - [x] GUI
-    - [ ] Basic swing GUI
+    - [x] Basic swing GUI
     - [ ] Custom buttons
     - [ ] Android GUI
     - [ ] iOS GUI
