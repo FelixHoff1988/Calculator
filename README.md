@@ -51,7 +51,7 @@ The `JAVA PROJECTS` view allows you to manage your dependencies. More details ca
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Felix Hoff - felixjacobhoff@gmail.com
 
 Project Link: [https://github.com/FelixHoff1988/Calculator](https://github.com/FelixHoff1988/Calculator)
 
