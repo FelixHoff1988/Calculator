@@ -56,12 +56,15 @@ To get a local copy up and running follow these simple example steps.
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+- [x] Basic arithmetic operations
+- [x] Dyck language 
+- [x] GUI
+    - [ ] Basic swing GUI
+    - [ ] Custom buttons
+    - [ ] Android GUI
+    - [ ] iOS GUI
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/FelixHoff1988/Calculator/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
